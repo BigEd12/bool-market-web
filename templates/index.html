@@ -206,7 +206,11 @@
           <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
           <script type='text/javascript'>
             var graphs = {{ graphJSON | safe }};
-            Plotly.plot('chart',graphs,{});
+            var layout = {
+                width: 10,
+                height: 10
+            };
+            Plotly.plot('chart',graphs,layout);
           </script>
 
         </div>
@@ -220,7 +224,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
             <h3>Meet the founders</h3>
-            <p>From humble beginnings, to bringing you the a brand new trading tool</p>
+            <p>From humble beginnings, to cutting edge financial tools</p>
           </div>
         </div>
         <div class="row justify-content-center">
@@ -255,17 +259,42 @@
           <form method="POST" action="/">
               <div class="row justify-content-center">
                   <div class="col-6">
-                      {{ pattern_form.company_ticker(class="form-control form-control-sm", placeholder="Company Ticker") }}
+                      {{ ticker_form.company_name(class="form-control form-control-sm", placeholder="Company Name") }}
+                      {% if ticker_form.company_name.errors %}
+                          <div class="alert alert-danger mt-2">
+                              {{ ticker_form.company_name.errors[0] }}
+                          </div>
+                      {% endif %}
+                      <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-primary">Generate</button>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    {{ pattern_form.company_ticker(class="form-control form-control-sm", placeholder="Company Ticker") }}
                       {% if pattern_form.company_ticker.errors %}
                           <div class="alert alert-danger mt-2">
                               {{ pattern_form.company_ticker.errors[0] }}
                           </div>
                       {% endif %}
+                      <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-primary">Generate</button>
+                    </div>
                   </div>
               </div>
-              <div class="text-center mt-3">
-                  <button type="submit" class="btn btn-primary">Generate</button>
+
+              <div class="ticker-options">
+                  <h3>Select a Ticker:</h3>
+                  <form method="POST">
+                      <select name="selected_ticker">
+                          <option value="{{ code1 }}">{{ code1 }} - {{ exchange1 }}</option>
+                          <option value="{{ code2 }}">{{ code2 }} - {{ exchange2 }}</option>
+                          <option value="{{ code3 }}">{{ code3 }} - {{ exchange3 }}</option>
+                      </select>
+                      <input type="submit" value="Select">
+                  </form>
               </div>
+
+
           </form>
       </div>
 
