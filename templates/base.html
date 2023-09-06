@@ -1,0 +1,14 @@
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.css') }}">
+    <!-- Add other CSS files or libraries here -->
+
+</head>
+<body>
+    <!-- Your HTML content here -->
+    {% block content %}{% endblock %}
+    <script src="{{ url_for('static', filename='js/bootstrap-theme.js') }}"></script>
+    <!-- Add other JavaScript files or libraries here -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</body>
+</html>

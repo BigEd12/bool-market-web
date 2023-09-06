@@ -1,0 +1,6 @@
+flask==2.3.3
+flask-bootstrap==3.3.7.1
+WTForms==3.0.1
+dash==2.13.0
+Werkzeug==2.3.0
+plotly==5.0.0
