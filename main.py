@@ -53,10 +53,19 @@ def index():
 
           code1 = first_3_entries[0]['Code']
           exchange1 = first_3_entries[0]['Exchange']
+          name1 = first_3_entries[0]['Name']
+          country1 = first_3_entries[0]['Country']
+          currency1 = first_3_entries[0]['Currency']
           code2 = first_3_entries[1]['Code']
           exchange2 = first_3_entries[1]['Exchange']
+          name2 = first_3_entries[1]['Name']
+          country2 = first_3_entries[1]['Country']
+          currency2 = first_3_entries[1]['Currency']
           code3 = first_3_entries[2]['Code']
           exchange3 = first_3_entries[2]['Exchange']
+          name3 = first_3_entries[2]['Name']
+          country3 = first_3_entries[2]['Country']
+          currency3 = first_3_entries[2]['Currency']
           
           return render_template('index.html',
                                 candle_form=candle_form,
@@ -68,6 +77,15 @@ def index():
                                 exchange1=exchange1,
                                 exchange2=exchange2,
                                 exchange3=exchange3,
+                                name1=name1,
+                                name2=name2,
+                                name3=name3,
+                                country1=country1,
+                                country2=country2,
+                                country3=country3,
+                                currency1=currency1,
+                                currency2=currency2,
+                                currency3=currency3,
                                 )
     
     df = pd.DataFrame({
