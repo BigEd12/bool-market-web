@@ -281,22 +281,72 @@
                     </div>
                   </div>
               </div>
+            </form>
+          </div>
+<!-- #------------------------------------------------ -->
+          <div class="container" data-aos="fade-up">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form method="POST" action="/select_company">
+                        <input type="hidden" name="selected_ticker" id="selected_ticker_input">
+                        <!-- Your other form fields here -->
+                        
+                    
+                      <table class="table table-hover">
+                          <thead>
+                              <tr>
+                                  <th>Company Name</th>
+                                  <th>Ticker Code</th>
+                                  <th>Stock Exchange</th>
+                                  <th></th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>Company 1</td>
+                                  <td>{{ code1 }}</td>
+                                  <td>{{ exchange1 }}</td>
+                                  <td>
+                                      <!-- Update the JavaScript function to set the selected_ticker input -->
+                                      <button onclick="setSelectedTicker('{{ code1 }}')">Select</button>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Company 2</td>
+                                  <td>{{ code2 }}</td>
+                                  <td>{{ exchange2 }}</td>
+                                  <td>
+                                      <!-- Update the JavaScript function to set the selected_ticker input -->
+                                      <button onclick="setSelectedTicker('{{ code2 }}')">Select</button>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Company 3</td>
+                                  <td>{{ code3 }}</td>
+                                  <td>{{ exchange3 }}</td>
+                                  <td>
+                                      <!-- Update the JavaScript function to set the selected_ticker input -->
+                                      <button onclick="setSelectedTicker('{{ code3 }}')">Select</button>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+          </div>
 
-              <div class="ticker-options">
-                  <h3>Select a Ticker:</h3>
-                  <form method="POST">
-                      <select name="selected_ticker">
-                          <option value="{{ code1 }}">{{ code1 }} - {{ exchange1 }}</option>
-                          <option value="{{ code2 }}">{{ code2 }} - {{ exchange2 }}</option>
-                          <option value="{{ code3 }}">{{ code3 }} - {{ exchange3 }}</option>
-                      </select>
-                      <input type="submit" value="Select">
-                  </form>
-              </div>
+<!-- JavaScript to set the selected ticker code -->
+<script>
+  function setSelectedTicker(code) {
+      document.getElementById('selected_ticker_input').value = code;
+  }
+</script>
 
 
-          </form>
-      </div>
+<!-- #------------------------------------------------ -->
+
 
       <div class="container" data-aos="fade-up">
         <table class="table table-hover">

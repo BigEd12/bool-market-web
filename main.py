@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect, request, jsonify
+from flask import Flask, render_template, url_for, redirect, request, jsonify, session
 from flask_bootstrap import Bootstrap
 
 import pandas as pd
@@ -27,11 +27,13 @@ def index():
     candle_form = CandleForm(request.form)
     pattern_form = PatternForm(request.form)
     ticker_form = TickerForm(request.form)
-    candlestick_data = None
     
-    
-    
+    api_data = session.get('api_data')
 
+    if api_data:
+      print("Man it totally does!")
+      print(api_data)
+    
     #---Form Submissions---#  
     if request.method == 'POST':
         #---Candle Form---#  
@@ -88,8 +90,22 @@ def index():
                            ticker_form=ticker_form,
                            graphJSON=graphJSON,
                            )
+    
+    
+    
+    
+@app.route('/select_company', methods=['POST'])
+def select_company():
+    selected_ticker = request.form.get('selected_ticker')
+    print(selected_ticker)
+    # Handle the selected company and perform API search here
+    # Make the API call and process the data as needed
+    
+    # Store the API data in the session
+    session['api_data'] = "I hope this works man"
 
-
+    # Redirect back to the index route
+    return redirect(url_for('index'))
 
 if __name__ == "__main__":
     app.run(debug=True)
