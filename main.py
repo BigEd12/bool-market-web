@@ -67,13 +67,13 @@ def index():
           country3 = first_3_entries[2]['Country']
           currency3 = first_3_entries[2]['Currency']
           
+          codes = [code1, code2, code3]
+          
           return render_template('index.html',
                                 candle_form=candle_form,
                                 pattern_form=pattern_form,
                                 ticker_form=ticker_form,
-                                code1=code1,
-                                code2=code3,
-                                code3=code3,
+                                codes=codes,
                                 exchange1=exchange1,
                                 exchange2=exchange2,
                                 exchange3=exchange3,
