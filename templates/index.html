@@ -63,7 +63,7 @@
           <li><a href=#about>About</a></li>
           <li><a href=#candlesticks>Candlesticks</a></li>
           <li><a href=#patterns>Patterns</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#footer">Contact</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -95,7 +95,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>The Co-Founders</h2>
+          <h2>About Bool Market</h2>
 
         </div>
 
@@ -109,33 +109,34 @@
 
                 <div class="swiper-slide">
                   <div class="item">
-                    <h3 class="mb-3">Let's grow your business together</h3>
-                    <h4 class="mb-3">Optio reiciendis accusantium iusto architecto at quia minima maiores quidem, dolorum.</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, ipsam perferendis asperiores explicabo vel tempore velit totam, natus nesciunt accusantium dicta quod quibusdam ipsum maiores nobis non, eum. Ullam reiciendis dignissimos laborum aut, magni voluptatem velit doloribus quas sapiente optio.</p>
+                    <h3 class="mb-3">Candlestick patterns</h3>
+                    <h4 class="mb-3">Identification</h4>
+                    <p>In this section of the page you can find detailed candlestick infromation for the company of your choosing</p>
+                    <p>By entering the date range and the ticker for the company you wish to see, you will be presented with a candlestick graph.</p>
+                    <p>Furthermore, you can select individual candlesticks that are present in the chart to see where they have been identified.</p>
+                    <a href="https://github.com/Ivanmoranr/Bool-Market/blob/main/README.md", target="_blank">Follow this link for further reading</a>
                   </div>
                 </div><!-- End slide item -->
 
                 <div class="swiper-slide">
                   <div class="item">
-                    <h3 class="mb-3">Unde perspiciatis ut repellat dolorem</h3>
-                    <h4 class="mb-3">Amet cumque nam sed voluptas doloribus iusto. Dolorem eos aliquam quis.</h4>
-                    <p>Dolorem quia fuga consectetur voluptatem. Earum consequatur nulla maxime necessitatibus cum accusamus. Voluptatem dolorem ut numquam dolorum delectus autem veritatis facilis. Et ea ut repellat ea. Facere est dolores fugiat dolor.</p>
+                    <h3 class="mb-3">Our API</h3>
+                    <h4 class="mb-3">Need to leverage our data?</h4>
+                    <p>All of our candlestick data is provided by our own in-house API, with candlestick identification provided by TA-Lib</p>
+                    <br>
+                    <p>If you would like to access our data for your own project, please visit our API page:</p>
+                    <br>
+                    <a href="#">API page</a>
                   </div>
                 </div><!-- End slide item -->
 
                 <div class="swiper-slide">
                   <div class="item">
-                    <h3 class="mb-3">Aliquid non alias minus</h3>
-                    <h4 class="mb-3">Necessitatibus voluptatibus explicabo dolores a vitae voluptatum.</h4>
-                    <p>Neque voluptates aut. Soluta aut perspiciatis porro deserunt. Voluptate ut itaque velit. Aut consectetur voluptatem aspernatur sequi sit laborum. Voluptas enim dolorum fugiat aut.</p>
-                  </div>
-                </div><!-- End slide item -->
-
-                <div class="swiper-slide">
-                  <div class="item">
-                    <h3 class="mb-3">Necessitatibus suscipit non voluptatem quibusdam</h3>
-                    <h4 class="mb-3">Tempora quos est ut quia adipisci ut voluptas. Deleniti laborum soluta nihil est. Eum similique neque autem ut.</h4>
-                    <p>Ut rerum et autem vel. Et rerum molestiae aut sit vel incidunt sit at voluptatem. Saepe dolorem et sed voluptate impedit. Ad et qui sint at qui animi animi rerum.</p>
+                    <h3 class="mb-3">Graph Patterns</h3>
+                    <h4 class="mb-3">Identify Common Patterns</h4>
+                    <p>Our pattern identifier identifies the most common stock market graph patterns and show the last places that they appeared.</p>
+                    <p>Simply enter the ticker for the company you wish to query, and you will be presented with a table with the information</p>
+                    <a href="https://github.com/Ivanmoranr/Bool-Market/blob/main/README.md", target="_blank">Follow this link for further reading</a>
                   </div>
                 </div><!-- End slide item -->
 
@@ -204,7 +205,7 @@
         
           <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
           <script type='text/javascript'>
-            var graphs = {{graphJSON | safe}};
+            var graphs = {{ graphJSON | safe }};
             Plotly.plot('chart',graphs,{});
           </script>
 
@@ -218,14 +219,31 @@
       <div class="container" data-aos="fade-up">
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
-            <h3>Ut fugiat aliquam aut non</h3>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-            <a class="cta-btn" href="#">Call To Action</a>
+            <h3>Meet the founders</h3>
+            <p>From humble beginnings, to bringing you the a brand new trading tool</p>
           </div>
         </div>
-
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center">
+            <div class="circular-images">
+              <div class="founder">
+                <img src="{{ url_for('static', filename='img/team/ivan.jpeg') }}" alt="Ivan Moran Rossell" title="Ivan Moran Rossell">
+                <div class="label">CEO</div>
+              </div>
+              <div class="founder">
+                <img src="{{ url_for('static', filename='img/team/miguel.jpeg') }}" alt="Miguel Equiza Goicoechea" title="Miguel Equiza Goicoechea">
+                <div class="label">CTO</div>
+              </div>
+              <div class="founder">
+                <img src="{{ url_for('static', filename='img/team/eddie.jpeg') }}" alt="Eduardo Olmos Greenham" title="Eduardo Olmos Greenham">
+                <div class="label">CFO</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section><!-- End Call To Action Section -->
+    
 
     <!-- ======= Features Section ======= -->
     <section id="patterns" class="features">
@@ -299,89 +317,7 @@
           </tbody>
         </table>
       </div>
-
-      <div class="details">
-        <div class="container" data-aos="fade-up" data-aos-delay="300">
-          <div class="row">
-            <div class="col-md-6">
-              <h4>Labore Sdio Lidui<br>Bonde Naruto</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam nostrum molestias doloremque quae delectus odit minima corrupti blanditiis quo animi!</p>
-              <a href="#about" class="btn-get-started">Get Started</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
     </section><!-- End Features Section -->
-
-    <!-- ======= Recent Blog Posts Section ======= -->
-    <section id="recent-posts" class="recent-posts">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <h2>Recent Blog Posts</h2>
-
-        </div>
-
-        <div class="row gy-5">
-
-          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="post-box">
-              <div class="post-img"><img src="static/img/blog/blog-1.jpg" class="img-fluid" alt=""></div>
-              <div class="meta">
-                <span class="post-date">Tue, December 12</span>
-                <span class="post-author"> / Julia Parker</span>
-              </div>
-              <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
-              <p>Illum voluptas ab enim placeat. Adipisci enim velit nulla. Vel omnis laudantium. Asperiores eum ipsa est officiis. Modi qui magni est...</p>
-              <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="post-box">
-              <div class="post-img"><img src="static/img/blog/blog-2.jpg" class="img-fluid" alt=""></div>
-              <div class="meta">
-                <span class="post-date">Fri, September 05</span>
-                <span class="post-author"> / Mario Douglas</span>
-              </div>
-              <h3 class="post-title">Et repellendus molestiae qui est sed omnis</h3>
-              <p>Voluptatem nesciunt omnis libero autem tempora enim ut ipsam id. Odit quia ab eum assumenda. Quisquam omnis doloribus...</p>
-              <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="post-box">
-              <div class="post-img"><img src="static/img/blog/blog-3.jpg" class="img-fluid" alt=""></div>
-              <div class="meta">
-                <span class="post-date">Tue, July 27</span>
-                <span class="post-author"> / Lisa Hunter</span>
-              </div>
-              <h3 class="post-title">Quia assumenda est et veritati</h3>
-              <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam...</p>
-              <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="post-box">
-              <div class="post-img"><img src="static/img/blog/blog-4.jpg" class="img-fluid" alt=""></div>
-              <div class="meta">
-                <span class="post-date">Tue, Sep 16</span>
-                <span class="post-author"> / Mario Douglas</span>
-              </div>
-              <h3 class="post-title">Pariatur quia facilis similique deleniti</h3>
-              <p>Et consequatur eveniet nam voluptas commodi cumque ea est ex. Aut quis omnis sint ipsum earum quia eligendi...</p>
-              <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Recent Blog Posts Section -->
 
   </main><!-- End #main -->
 
@@ -395,64 +331,79 @@
             <a href="index.html" class="logo d-flex align-items-center">
               <span>Bool Market</span>
             </a>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+            <p>Are you interested in our product?</p>
+            <p>Interested in collaborating?</p>
+            <p>Get in touch!</p>
+            <br>
+            <p>
+              Madrid, Spain<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Ivan</h4>
+            <ul>
+              <li><i class="bi bi-dash">Machine Learning</i></li>
+              <li><i class="bi bi-dash">Deep Learning</i></li>
+              <li><i class="bi bi-dash">Data Analysis</i></li>
+            </ul>
             <div class="social-links d-flex  mt-3">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              <a href="https://github.com/Ivanmoranr" target="_blank" class="github"><i class="bi bi-github"></i></a>
+              <a href="https://www.linkedin.com/in/ivanmoranrossel/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              <a href="mailto:ivanmoranr@outlook.com" target="_blank" class="email">
+                <i class="bi bi-envelope"></i>
+              </a>
             </div>
           </div>
 
           <div class="col-lg-2 col-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4>Miguel</h4>
             <ul>
-              <li><i class="bi bi-dash"></i> <a href="#">Home</a></li>
-              <li><i class="bi bi-dash"></i> <a href="#">About us</a></li>
-              <li><i class="bi bi-dash"></i> <a href="#">Services</a></li>
-              <li><i class="bi bi-dash"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bi bi-dash"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bi bi-dash">Machine Learning</i></li>
+              <li><i class="bi bi-dash">Deep Learning</i></li>
+              <li><i class="bi bi-dash">Data Analysis</i></li>
             </ul>
+            <div class="social-links d-flex  mt-3">
+              <a href="https://github.com/Miguel-Equiza" target="_blank" class="github"><i class="bi bi-github"></i></a>
+              <a href="https://www.linkedin.com/in/mequizagoi/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              <a href="mailto:miguelequiva12345@gmail.com" target="_blank" class="email">
+                <i class="bi bi-envelope"></i>
+              </a>
+            </div>
           </div>
+      
 
           <div class="col-lg-2 col-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>Eddie</h4>
             <ul>
-              <li><i class="bi bi-dash"></i> <a href="#">Web Design</a></li>
-              <li><i class="bi bi-dash"></i> <a href="#">Web Development</a></li>
-              <li><i class="bi bi-dash"></i> <a href="#">Product Management</a></li>
-              <li><i class="bi bi-dash"></i> <a href="#">Marketing</a></li>
-              <li><i class="bi bi-dash"></i> <a href="#">Graphic Design</a></li>
+              <li><i class="bi bi-dash">Machine Learning</i></li>
+              <li><i class="bi bi-dash">Deep Learning</i></li>
+              <li><i class="bi bi-dash">Data Analysis</i></li>
             </ul>
+            <div class="social-links d-flex  mt-3">
+              <a href="https://github.com/BigEd12" target="_blank" class="github"><i class="bi bi-github"></i></a>
+              <a href="https://www.linkedin.com/in/olmosedward/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              <a href="mailto:olmos.edward@gmail.com" target="_blank" class="email">
+                <i class="bi bi-envelope"></i>
+              </a>
           </div>
-
-          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-            <h4>Contact Us</h4>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-
           </div>
 
         </div>
       </div>
     </div>
 
-    <div class="footer-legal">
+    <div class="footer-legal last-section">
       <div class="container">
         <div class="copyright">
-          &copy; Copyright <strong><span>Bool Market</span></strong>. All Rights Reserved
+          &copy; Copyright <strong><span>Bool Market 2023</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
           <!-- You can delete the links only if you purchased the pro version. -->
           <!-- Licensing information: https://bootstrapmade.com/license/ -->
           <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nova-bootstrap-business-template/ -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          Designed by Bool Market
         </div>
       </div>
     </div>
