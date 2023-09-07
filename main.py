@@ -80,12 +80,12 @@ def index():
                     graphJSONCandles=graphJSONCandles
                 )
             # ----
-            # fig = go.Figure(data=[go.Candlestick(x=df['x'],
-            #             open=df['open'],
-            #             high=df['high'],
-            #             low=df['low'],
-            #             close=df['close'])])
-            # graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+            fig = go.Figure(data=[go.Candlestick(x=df['x'],
+                        open=df['open'],
+                        high=df['high'],
+                        low=df['low'],
+                        close=df['close'])])
+            graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
             return render_template('index.html',
                                   candle_form=candle_form,
