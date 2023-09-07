@@ -5,3 +5,6 @@ plotly==5.0.0
 yfinance
 gunicorn
 tensorflow-cpu
+ipywidgets
+Ipython
+TA-lib

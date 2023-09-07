@@ -190,6 +190,14 @@
                             </div>
                         {% endif %}
                     </div>
+                    <div class="col">
+                      {{ candle_form.selected_candle(class="form-control")}}
+                      {% if candle_form.selected_candle.errors %}
+                          <div class="alert alert-danger">
+                              {{ candle_form.selected_candle.errors[0] }}
+                          </div>
+                      {% endif %}
+                  </div>
                 </div>
                 <div class="text-center mt-3"> <!-- Center the button -->
                     <button id='update-button' type="submit" class="btn btn-primary">Generate</button>
@@ -198,14 +206,11 @@
           </div>
 
           
-          <div class="section-header">
-            <h2>Ticker name</h2>
-          </div>
-          <div id='chart' class='chart'”></div>
+          <div id="chart"></div>
         
           <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
           <script type='text/javascript'>
-            var graphs = {{ graphJSON | safe }};
+            var graphs = {{ graphJSONCandles | safe }};
             var layout = {
                 width: 10,
                 height: 10

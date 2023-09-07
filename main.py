@@ -6,6 +6,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import json
 import plotly
+import ipywidgets as widgets
 
 import requests
 
@@ -13,6 +14,8 @@ import datetime
 from dateutil.relativedelta import relativedelta
 
 from utils.one_candle.one_candle import plotting
+from utils.candle_patterns.candle_patterns import create_candlestick_chart
+from utils.cdl_patterns.cdl_patterns import CDL_PATTERNS
 
 from wtforms import Form, StringField
 from wtforms.validators import InputRequired
@@ -36,7 +39,6 @@ def index():
     api_data = session.get('api_data')
 
     if api_data:
-      print("Man it totally does!")
       print(api_data)
     
     #---Form Submissions---#  
@@ -46,6 +48,52 @@ def index():
             from_date = candle_form.from_date.data
             to_date = candle_form.to_date.data
             candle_ticker = candle_form.company_ticker.data
+            selected_candlesticks = candle_form.selected_candle.data
+            print(selected_candlesticks)
+            url_base = f"http://34.79.179.30:8000/candlestick/{candle_ticker}/{from_date}/{to_date}"
+
+            res = requests.get(url_base)
+            text = res.text
+            data = json.loads(text)
+            data = data['data']
+            df = pd.DataFrame(data)
+            
+            if not df.empty:
+                # Create the candlestick chart and checkboxes
+                fig = create_candlestick_chart(df, selected_candlesticks)
+
+                # Customize the layout and display the chart
+                fig.update_layout(
+                    title="Interactive Candlestick Chart with Selected Patterns",
+                    xaxis_title="Date",
+                    yaxis_title="Price",
+                    xaxis_rangeslider_visible=True
+                )
+
+                
+                graphJSONCandles = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+                return render_template('index.html',
+                    candle_form=candle_form,
+                    pattern_form=pattern_form,
+                    ticker_form=ticker_form,
+                    graphJSONCandles=graphJSONCandles
+                )
+            # ----
+            # fig = go.Figure(data=[go.Candlestick(x=df['x'],
+            #             open=df['open'],
+            #             high=df['high'],
+            #             low=df['low'],
+            #             close=df['close'])])
+            # graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+            return render_template('index.html',
+                                  candle_form=candle_form,
+                                  pattern_form=pattern_form,
+                                  ticker_form=ticker_form,
+                                  graphJSON=graphJSON,
+                                  )
+
 
         #---Ticker Form---#      
         if ticker_form.validate():
@@ -105,13 +153,12 @@ def index():
                 high=df['high'],
                 low=df['low'],
                 close=df['close'])])
-    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-
+    graphJSONCandles = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return render_template('index.html',
                            candle_form=candle_form,
                            pattern_form=pattern_form,
                            ticker_form=ticker_form,
-                           graphJSON=graphJSON,
+                           graphJSONCandles=graphJSONCandles,
                            )
     
     
