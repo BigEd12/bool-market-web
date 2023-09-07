@@ -12,7 +12,7 @@ import requests
 import datetime
 from dateutil.relativedelta import relativedelta
 
-from utils import preprocessing, one_candle
+from utils.one_candle.one_candle import plotting
 
 from wtforms import Form, StringField
 from wtforms.validators import InputRequired
@@ -128,17 +128,21 @@ def select_company():
       one_year_ago = one_year_ago_str.strftime("%Y-%m-%d")
       print(f"Yesterday: {yesterday}")
       print(f"Year ago: {one_year_ago}")
-      res = one_candle.plotting(ticker=selected_ticker,
+      res = plotting(ticker=selected_ticker,
                           start_date=one_year_ago,
                           end_date=yesterday,
                           with_pattern=True
                           )
+      graphJSONPAttern = json.dumps(res, cls=plotly.utils.PlotlyJSONEncoder)
+      
+      return redirect(url_for('index', graphJSONPAttern=graphJSONPAttern))
+      
       
       print(f"This is the result: {res}")
       
     # Handle the selected company and perform API search here
     # Make the API call and process the data as needed
-    
+
     # Store the API data in the session
     session['api_data'] = "I hope this works man"
 
