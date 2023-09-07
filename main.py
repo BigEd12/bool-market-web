@@ -9,6 +9,11 @@ import plotly
 
 import requests
 
+import datetime
+from dateutil.relativedelta import relativedelta
+
+from utils import preprocessing, one_candle
+
 from wtforms import Form, StringField
 from wtforms.validators import InputRequired
 
@@ -67,13 +72,13 @@ def index():
           country3 = first_3_entries[2]['Country']
           currency3 = first_3_entries[2]['Currency']
           
-          codes = [code1, code2, code3]
-          
           return render_template('index.html',
                                 candle_form=candle_form,
                                 pattern_form=pattern_form,
                                 ticker_form=ticker_form,
-                                codes=codes,
+                                code1=code1,
+                                code2=code2,
+                                code3=code3,
                                 exchange1=exchange1,
                                 exchange2=exchange2,
                                 exchange3=exchange3,
@@ -116,6 +121,21 @@ def index():
 def select_company():
     selected_ticker = request.form.get('selected_ticker')
     print(selected_ticker)
+    if selected_ticker:
+      yesterday_str = datetime.datetime.now() - datetime.timedelta(days=1)
+      one_year_ago_str = yesterday_str - relativedelta(years=1)
+      yesterday = yesterday_str.strftime("%Y-%m-%d")
+      one_year_ago = one_year_ago_str.strftime("%Y-%m-%d")
+      print(f"Yesterday: {yesterday}")
+      print(f"Year ago: {one_year_ago}")
+      res = one_candle.plotting(ticker=selected_ticker,
+                          start_date=one_year_ago,
+                          end_date=yesterday,
+                          with_pattern=True
+                          )
+      
+      print(f"This is the result: {res}")
+      
     # Handle the selected company and perform API search here
     # Make the API call and process the data as needed
     
