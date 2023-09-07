@@ -4,4 +4,4 @@ WTForms==3.0.1
 plotly==5.0.0
 yfinance
 gunicorn
-tensorflow
+tensorflow-cpu
