@@ -3,3 +3,4 @@ flask-bootstrap==3.3.7.1
 WTForms==3.0.1
 plotly==5.0.0
 yfinance
+gunicorn
