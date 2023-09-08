@@ -15,6 +15,7 @@ def create_candlestick_chart(df, selected_patterns=[]):
     for pattern in selected_patterns:
         # Filter DataFrame to find rows with the selected pattern
         pattern_rows = df[df[pattern] == 1]
+        print(f"patterns rows{pattern_rows}")
 
         # Add arrows to the plot at the pattern locations
         fig.add_trace(go.Scatter(
