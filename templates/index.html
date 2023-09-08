@@ -271,7 +271,7 @@
                           </div>
                       {% endif %}
                       <div class="text-center mt-3">
-                        <button type="submit" class="btn-light">Generate</button>
+                        <button type="submit" class="btn btn-light">Generate</button>
                     </div>
                   </div>
                   <!-- <div class="col-6">
@@ -296,7 +296,7 @@
                         <input type="hidden" name="selected_ticker" id="selected_ticker_input">
                         <!-- Your other form fields here -->
                         
-                    
+                      {% if name1 %}
                       <table class="table table-hover">
                           <thead>
                               <tr>
@@ -315,7 +315,7 @@
                                   <td>{{ exchange1 }}</td>
                                   <td>
                                       <!-- Update the JavaScript function to set the selected_ticker input -->
-                                      <button onclick="setSelectedTicker('{{ code1 }}')">Select</button>
+                                      <button class="btn btn-light" onclick="setSelectedTicker('{{ code1 }}')">Select</button>
                                   </td>
                               </tr>
                               <tr>
@@ -325,7 +325,7 @@
                                   <td>{{ exchange2 }}</td>
                                   <td>
                                       <!-- Update the JavaScript function to set the selected_ticker input -->
-                                      <button onclick="setSelectedTicker('{{ code2 }}')">Select</button>
+                                      <button class="btn btn-light" onclick="setSelectedTicker('{{ code2 }}')">Select</button>
                                   </td>
                               </tr>
                               <tr>
@@ -335,11 +335,12 @@
                                   <td>{{ exchange3 }}</td>
                                   <td>
                                       <!-- Update the JavaScript function to set the selected_ticker input -->
-                                      <button onclick="setSelectedTicker('{{ code3 }}')">Select</button>
+                                      <button class="btn btn-light" onclick="setSelectedTicker('{{ code3 }}')">Select</button>
                                   </td>
                               </tr>
                           </tbody>
                       </table>
+                      {% endif %}
                     </form>
                 </div>
             </div>

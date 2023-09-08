@@ -173,8 +173,7 @@ def select_company():
       one_year_ago_str = yesterday_str - relativedelta(years=1)
       yesterday = yesterday_str.strftime("%Y-%m-%d")
       one_year_ago = one_year_ago_str.strftime("%Y-%m-%d")
-      print(f"Yesterday: {yesterday}")
-      print(f"Year ago: {one_year_ago}")
+
       res = plotting(ticker=selected_ticker,
                           start_date=one_year_ago,
                           end_date=yesterday,
@@ -183,12 +182,7 @@ def select_company():
       graphJSONPAttern = json.dumps(res, cls=plotly.utils.PlotlyJSONEncoder)
       
       return redirect(url_for('index', graphJSONPAttern=graphJSONPAttern))
-      
-      
-      print(f"This is the result: {res}")
-      
-    # Handle the selected company and perform API search here
-    # Make the API call and process the data as needed
+    
 
     # Store the API data in the session
     session['api_data'] = "I hope this works man"
