@@ -7,4 +7,4 @@ gunicorn
 tensorflow-cpu
 ipywidgets
 Ipython
-TA-lib
+TA-Lib==0.4.0
