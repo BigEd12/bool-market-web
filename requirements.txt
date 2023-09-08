@@ -7,3 +7,4 @@ gunicorn
 tensorflow-cpu
 ipywidgets
 Ipython
+scikit-learn
