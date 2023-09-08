@@ -148,24 +148,24 @@ def index():
                                 currency3=currency3,
                                 )
     
-    df = pd.DataFrame({
-      'x': ['1', '2', '3', '4', '5'],
-      'open': [20, 25, 30, 35, 40],
-      'low': [15, 20, 25, 30, 35],
-      'high': [25, 30, 35, 40, 45],
-      'close': [22, 27, 32, 37, 42]
-    })
-    fig = go.Figure(data=[go.Candlestick(x=df['x'],
-                open=df['open'],
-                high=df['high'],
-                low=df['low'],
-                close=df['close'])])
-    graphJSONCandles = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    # df = pd.DataFrame({
+    #   'x': ['1', '2', '3', '4', '5'],
+    #   'open': [20, 25, 30, 35, 40],
+    #   'low': [15, 20, 25, 30, 35],
+    #   'high': [25, 30, 35, 40, 45],
+    #   'close': [22, 27, 32, 37, 42]
+    # })
+    # fig = go.Figure(data=[go.Candlestick(x=df['x'],
+    #             open=df['open'],
+    #             high=df['high'],
+    #             low=df['low'],
+    #             close=df['close'])])
+    # graphJSONCandles = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return render_template('index.html',
                            candle_form=candle_form,
                            pattern_form=pattern_form,
                            ticker_form=ticker_form,
-                           graphJSONCandles=graphJSONCandles,
+                          #  graphJSONCandles=graphJSONCandles,
                            )
     
     
