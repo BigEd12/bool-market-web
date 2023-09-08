@@ -60,15 +60,21 @@ def index():
             
             if not df.empty:
                 # Create the candlestick chart and checkboxes
-                fig = create_candlestick_chart(df, selected_candlesticks)
+                fig = plotting(ticker=candle_ticker, 
+                               start_date=from_date,
+                               end_date=to_date,
+                               with_pattern=True,
+                               with_candle=True,
+                               cdle_patterns=selected_candlesticks,
+                          )
 
-                # Customize the layout and display the chart
-                fig.update_layout(
-                    title="Interactive Candlestick Chart with Selected Patterns",
-                    xaxis_title="Date",
-                    yaxis_title="Price",
-                    xaxis_rangeslider_visible=True
-                )
+                # # Customize the layout and display the chart
+                # fig.update_layout(
+                #     title="Interactive Candlestick Chart with Selected Patterns",
+                #     xaxis_title="Date",
+                #     yaxis_title="Price",
+                #     xaxis_rangeslider_visible=True
+                # )
 
                 
                 graphJSONCandles = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
@@ -80,6 +86,7 @@ def index():
                     graphJSONCandles=graphJSONCandles
                 )
             # ----
+            print(df.columns)
             fig = go.Figure(data=[go.Candlestick(x=df['x'],
                         open=df['open'],
                         high=df['high'],
@@ -167,7 +174,7 @@ def index():
 @app.route('/select_company', methods=['POST'])
 def select_company():
     selected_ticker = request.form.get('selected_ticker')
-    print(selected_ticker)
+    print(f"this is what is selected: {selected_ticker}")
     if selected_ticker:
       yesterday_str = datetime.datetime.now() - datetime.timedelta(days=1)
       one_year_ago_str = yesterday_str - relativedelta(years=1)
@@ -177,7 +184,7 @@ def select_company():
       res = plotting(ticker=selected_ticker,
                           start_date=one_year_ago,
                           end_date=yesterday,
-                          with_pattern=True
+                          with_pattern=True,
                           )
       graphJSONPAttern = json.dumps(res, cls=plotly.utils.PlotlyJSONEncoder)
       
