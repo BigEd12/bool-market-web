@@ -12,7 +12,7 @@ import ipywidgets as widgets
 def get_chart_p(ticker, start_date, end_date,  with_pattern=False, with_candle = False):
     df = yf.download(ticker, start=start_date, end=end_date)
     pretrained_model_p = tf.keras.models.load_model("utils/model_p")
-    pretrained_model_d = tf.keras.models.load_model("utils/model_p_dates")
+    pretrained_model_d = tf.keras.models.load_model("utils/model_p_d")
 
     if with_candle == True:
         df = one_candle(df)
